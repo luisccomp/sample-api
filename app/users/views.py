@@ -20,7 +20,7 @@ def register_user():
     elif User.query.filter(User.email == user_data.email).first():
         raise BadRequest("Choose a different email")
     
-    user = User(email=user_data.email)
+    user = User(email=user_data.email, username=user_data.username)
     user.set_password(user_data.password)
     
     db.session.add(user)
